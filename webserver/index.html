@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="static/style.css">
+		<script src="static/src/jquery/jquery-2.1.4.js"></script>
+		<script src="static/src/cubie.js"></script>
+	</head>
+	<body>
+
+    <div id="Input">
+    <p>Input Volume <progress value="0.176776695297" min="0"  max="1" id="InputVolume"></progress></p>
+    </div>
+
+		<div id="AudioReverb">
+    <p> Reverb enabled </p>
+    <p><button id="ReverbEnabled">ON</button></p>
+    <p>Reverb TYPE</p>
+    <p><button id="ReverbTypeSELF">SELF</button> <button id="ReverbTypePROG">PROG</button> <button id="ReverbTypePROG2">PROG2</button> <button id="ReverbTypeZREV">ZREV</button> <button id="ReverbTypeZREV2">ZREV2</button></p>
+		<p>Reverb Parameters</p>
+    Volume: <progress value="0.176776695297" min="0"  max="1" id="ReverbVolume"></progress>
+		RoomSize: <progress value="0.1" min="0" max="1" id="RoomSize"></progress>
+		Damp: <progress value="0.1" min="0" max="1" id="Damp"></progress>
+		Dry: <progress value="0.3" min="0" max="1" id="Dry"></progress>
+		Wet: <progress value="0.3" min="0" max="1" id="Wet"></progress>
+    Width: <progress value="1.0" min="0" max="1" id="Width"></progress>
+		</div>
+
+	</body>
+</html>
