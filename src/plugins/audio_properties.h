@@ -24,23 +24,21 @@ class AudioProperties
     virtual ~AudioProperties();
     void addIntProperty(std::string key, CallBackIntProperty callback);
     void addFloatProperty(std::string key, CallBackFloatProperty callback);
-    
+
     void setIntProperty(std::string key, int value);
     void setFloatProperty(std::string key, float value);
-    
-    bool needUpdate();
+
     void update();
-    
+
   private:
     void run();
-  
+
     std::map<std::string, std::vector<CallBackFloatProperty>> m_floatProperties;
     std::map<std::string, std::vector<CallBackIntProperty>> m_intProperties;
-    
+
     std::thread m_thread;
     ISharedMemory m_sharedMemory;
-    bool m_isRunning;
-    std::atomic<bool> m_update;
+    std::atomic<bool> m_isRunning;
 };
 
 

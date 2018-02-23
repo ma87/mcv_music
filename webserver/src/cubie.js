@@ -115,7 +115,7 @@ function setPositionProgressBar(evt, progressBar, callback, data, parameter)
 
 function updateReverb(reverb_data)
 {
-    $.post('/setReverb', reverb_data, function(data) {
+    $.post('/setFreeReverb', reverb_data, function(data) {
 
     });
 }

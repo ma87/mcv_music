@@ -27,10 +27,11 @@ process (jack_nframes_t nframes, void *arg)
 void
 jack_shutdown (void *arg)
 {
-	exit (1);
+	// JackSource *source = (JackSource *)arg;
+  //
 }
 
-JackSource::JackSource(char * plugin_name)
+JackSource::JackSource(char * plugin_name, AudioProperties * audio_properties)
 {
 	const char *server_name = NULL;
 	jack_options_t options = JackNullOption;
@@ -56,6 +57,7 @@ JackSource::JackSource(char * plugin_name)
 	}
 
   m_plugin = createPlugin(plugin_name);
+	m_plugin->setProperties(audio_properties);
 
 	jack_set_process_callback (m_client, process, this);
 
@@ -105,6 +107,27 @@ JackSource::JackSource(char * plugin_name)
 		exit (1);
 	}
 
+}
+
+JackSource::~JackSource()
+{
+	int res;
+	if (res = jack_deactivate(m_client))
+	{
+		fprintf (stderr, "cannot deactivate client, err = %d\n", res);
+	}
+	else
+	{
+		printf("client deactivated\n");
+	}
+	if (res = jack_client_close(m_client))
+	{
+		fprintf (stderr, "cannot close client, err = %d\n", res);
+	}
+	else
+	{
+		printf("client closed\n");
+	}
 }
 
 AudioEffect * JackSource::createPlugin(char * plugin_name)

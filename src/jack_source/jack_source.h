@@ -15,7 +15,8 @@
 class JackSource
 {
   public:
-    JackSource(char * plugin_name);
+    JackSource(char * plugin_name, AudioProperties * audio_properties);
+    virtual ~JackSource();
     AudioEffect   * getPlugin();
 
     jack_port_t **m_input_ports;

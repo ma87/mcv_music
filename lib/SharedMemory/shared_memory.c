@@ -168,6 +168,7 @@ void set_int_shared_property(ISharedMemory i_shared_memory, char * key, int valu
 
    if (wake_up > 0)
    {
+     printf("wake up for key %s\n", key);
       pthread_cond_broadcast(&shared_memory->cond);
    }
 }
@@ -215,6 +216,7 @@ void set_float_shared_property(ISharedMemory i_shared_memory, char * key, float 
 
    if (is_wake_up > 0)
    {
+     printf("wake up for key %s\n", key);
       pthread_cond_broadcast(&shared_memory->cond);
    }
 }

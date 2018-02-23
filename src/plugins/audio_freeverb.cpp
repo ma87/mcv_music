@@ -43,12 +43,13 @@ void FreeverbEffect::setdry(float value)
 void FreeverbEffect::setwidth(float value)
 {
   m_model.setwidth(value);
-  m_model.printconfig();
+  m_model.printconfig(); // webserver triggers update Shared Memory by setting width (last parameter to set)
 }
 
 void FreeverbEffect::setProperties(AudioProperties * audioProperties)
 {
   using std::placeholders::_1;
+  std::cout << "set freeverb properties" << std::endl;
 
   audioProperties->addIntProperty(std::string("REVERB_ENABLED"), std::bind( &AudioEffect::setEnabled, this, _1 ));
   audioProperties->setIntProperty(std::string("REVERB_ENABLED"), 1);
