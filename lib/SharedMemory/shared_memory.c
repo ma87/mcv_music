@@ -37,18 +37,6 @@ ISharedMemory create_shared_memory(int shared_key)
    int next = sizeof(int);
    memcpy((char *)shared_memory->properties, &next, sizeof(int));
 
-   /*
-   PROPERTY_TYPE type = INT;
-   int value = PAUSE;
-   Property * property = create_property("STREAM_STATE", type, sizeof(int), &value);
-   add_property(shared_memory->properties, property);
-   free_property(property);
-
-   value = 0;
-   property = create_property("TITLE", type, sizeof(int), &value);
-   add_property(shared_memory->properties, property);
-   free_property(property);*/
-
    return (ISharedMemory)shared_memory;
 }
 
@@ -90,7 +78,8 @@ ISharedMemory get_shared_memory(int shared_key, int * already_exists)
 void free_shared_memory(ISharedMemory i_shared_memory)
 {
    SharedMemory * shared_memory = (SharedMemory *)i_shared_memory;
-   shmdt(&shared_memory->id);
+
+   // shmctl checks if there is still attached nodes before removing shared memory
    shmctl(shared_memory->id, IPC_RMID, NULL);
 }
 

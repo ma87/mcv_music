@@ -27,6 +27,7 @@ AudioProperties::~AudioProperties()
   // trigger thread to quit:
   printf("try broadcast\n");
   pthread_cond_broadcast(cond);
+  free_shared_memory(m_sharedMemory);
 }
 
 

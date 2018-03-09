@@ -29,3 +29,6 @@ add_custom_command(TARGET _mcv_shared_memory POST_BUILD
 
 ## Export shared memory library for another targets in project
 ADD_LIBRARY (shared_memory shared_memory.c property.c)
+
+ADD_EXECUTABLE(test_shared_memory main.c)
+TARGET_LINK_LIBRARIES(test_shared_memory shared_memory pthread)

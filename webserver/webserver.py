@@ -61,3 +61,5 @@ if __name__ == '__main__':
 
 
     cherrypy.quickstart(webapp, '/', conf)
+
+    mcsm.free_shared_memory(audio_controller)
